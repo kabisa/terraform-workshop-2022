@@ -1,0 +1,12 @@
+@startuml
+
+title Step 1
+
+rectangle VPC {
+    rectangle "Security Group" {
+      [EC2]
+    }
+}
+User --> [EC2]: HTTP
+
+@enduml
