@@ -1,0 +1,23 @@
+@startuml
+
+title Step 4
+
+rectangle VPC {
+    rectangle "Security Group ALB" {
+      [ALB]
+    }
+
+    rectangle "Security Group" {
+      [EC2 - 1]
+      [EC2 - 2]
+    }
+}
+
+:User:
+
+User --> [ALB]: HTTP
+
+[ALB] --> [EC2 - 1]
+[ALB] --> [EC2 - 2]
+
+@enduml

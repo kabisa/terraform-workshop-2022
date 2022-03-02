@@ -1,0 +1,22 @@
+@startuml
+
+title Step 3
+
+rectangle VPC {
+    [Elastic IP - 1]
+    [Elastic IP - 2]
+
+    rectangle "Security Group" {
+      [EC2 - 1]
+      [EC2 - 2]
+    }
+}
+
+:User:
+
+User --> [Elastic IP - 1]: HTTP
+User --> [Elastic IP - 2]: HTTP
+[Elastic IP - 1] --> [EC2 - 1]
+[Elastic IP - 2] --> [EC2 - 2]
+
+@enduml
