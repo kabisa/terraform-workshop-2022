@@ -8,7 +8,12 @@ cat <<- EOF > /opt/bitnami/nginx/html/index.html
   </head>
   <body>
     <h1>Hello, world</h1>
-    <p>This server was set up by team ${team}</p>
+    <p>
+      This server was set up by team ${team}.
+    </p>
+    <p>
+      Served by instance ${instance}
+    </p>
   </body>
 </html>
 EOF

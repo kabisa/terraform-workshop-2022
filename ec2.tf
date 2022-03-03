@@ -24,6 +24,7 @@ data "aws_ami" "bitnami_nginx" {
 }
 
 resource "aws_instance" "this" {
+  count         = local.instance_count
   ami           = data.aws_ami.bitnami_nginx.id
   instance_type = var.ec2_instance_type
 
@@ -31,7 +32,8 @@ resource "aws_instance" "this" {
   subnet_id              = module.vpc.public_subnets[0]
 
   user_data = templatefile("templates/user_data.sh.tpl", {
-    team = var.team
+    team     = var.team
+    instance = count.index
   })
 
   root_block_device {
@@ -41,10 +43,12 @@ resource "aws_instance" "this" {
 }
 
 resource "aws_eip" "this" {
-  vpc = true
+  count = local.instance_count
+  vpc   = true
 }
 
 resource "aws_eip_association" "this" {
-  instance_id   = aws_instance.this.id
-  allocation_id = aws_eip.this.id
+  count         = local.instance_count
+  instance_id   = aws_instance.this[count.index].id
+  allocation_id = aws_eip.this[count.index].id
 }
