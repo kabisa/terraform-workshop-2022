@@ -33,6 +33,9 @@ Related documentation:
 
 * https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule
 
+### visual representation:
+![](./_images/1.png)
+
 ## Step 2 - Add an elastic IP
 
 Your application is now reachable. We now use the public IP of the EC2
@@ -48,6 +51,9 @@ Related documentation:
 
 * https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip
 * https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip_association
+
+### visual representation:
+![](./_images/2.png)
 
 ## Step 3 - Multiple EC2-instances
 
@@ -77,6 +83,9 @@ Related documentation:
 * https://www.terraform.io/language/meta-arguments/count
 * https://www.terraform.io/language/meta-arguments/for_each
 
+### visual representation:
+![](./_images/3.png)
+
 ## Step 4 - Load balancer
 
 In this part, we are going to add an Application Load Balancer (ALB) to forward
@@ -104,6 +113,9 @@ Related documentation:
 * https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener
 * https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group
 * https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group_attachment
+
+### visual representation:
+![](./_images/4.png)
 
 ## Final Step (always end with this step even if you didn't finish all previous steps)
 
