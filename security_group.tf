@@ -67,3 +67,18 @@ resource "aws_security_group_rule" "alb_egress_instances" {
   to_port   = 0
   protocol  = "-1"
 }
+
+resource "aws_security_group" "rds" {
+  name   = "cloud-legends-demo-${var.team}-rds"
+  vpc_id = module.vpc.vpc_id
+}
+
+resource "aws_security_group_rule" "rds_mysql" {
+  security_group_id = aws_security_group.rds.id
+
+  type        = "ingress"
+  from_port   = 3306
+  to_port     = 3306
+  cidr_blocks = ["0.0.0.0/0"]
+  protocol    = "tcp"
+}
