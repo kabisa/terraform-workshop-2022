@@ -1,10 +1,10 @@
 data "aws_ami" "bitnami_nginx" {
   most_recent = true
-  owners      = ["979382823631"]
+  owners      = ["099720109477"]
 
   filter {
     name   = "name"
-    values = ["bitnami-nginx-*"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20220606"]
   }
 
   filter {
@@ -34,6 +34,11 @@ resource "aws_instance" "this" {
   user_data = templatefile("templates/user_data.sh.tpl", {
     team     = var.team
     instance = count.index
+
+    db_host     = aws_db_instance.this.address
+    db_name     = aws_db_instance.this.db_name
+    db_username = aws_db_instance.this.username
+    db_password = aws_db_instance.this.password
   })
 
   root_block_device {
